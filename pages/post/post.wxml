@@ -1,0 +1,91 @@
+<!-- pages/post/post.wxml -->
+<import src="post-item/post-item-tpl.wxml" />
+<view>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
+        <swiper-item>
+            <image src="/images/post/post-1@text.jpg" />
+        </swiper-item>
+        <swiper-item>
+            <image src="/images/post/post-2@text.jpg" />
+        </swiper-item>
+        <swiper-item>
+            <image src="/images/post/post-3@text.jpg" />
+        </swiper-item>
+    </swiper>
+</view>
+<!-- 硬写法 -->
+<!-- <view class="post-container">
+    <view class="post-author-data">
+        <image src="/images/post/post-4.jpg" />
+        <text>10 30 2018</text>
+    </view>
+    <image class="post-image" src="/images/post/post-4.jpg" />
+    <text>冰柜和冰糕的区别就是一个五毛一个一块钱 其实这些都是小时候的记忆，自己需要慢慢回味......</text>
+    <view class="post-like">
+        <image src="/images/icon/wx_app_collect.png" />
+        <text>108</text>
+        <image src="/images/icon/wx_app_view.png" />
+        <text>92</text>
+        <image src="/images/icon/wx_app_message.png" />
+        <text>7</text>
+    </view>
+</view> -->
+<!-- 数据绑定的写法 -->
+<!-- <view class="post-container">
+    <view class="post-author-data">
+        <image src="{{avatar}}" />
+        <text>{{data}}</text>
+    </view>
+    <image class="post-image" src="{{postImg}}" mode="aspectFill" />
+    <text>{{content}}</text>
+    <view class="post-like">
+        <image src="/images/icon/wx_app_collect.png" />
+        <text>{{collectionNum}}</text>
+        <image src="/images/icon/wx_app_view.png" />
+        <text>{{readingNum}}</text>
+        <image src="/images/icon/wx_app_message.png" />
+        <text>{{commentNum}}</text>
+    </view>
+</view> -->
+<!-- 用wx:for 写法 -->
+<!-- <view wx:for="{{Num}}" wx:key="ind" wx:for-index="ind" wx:for-item="item" class="post-container">
+    <view class="post-author-data">
+        <image src="{{avatar}}" />
+        <text>{{data}}</text>
+    </view>
+    <image class="post-image" src="{{postImg}}" mode="aspectFill" />
+    <text>{{content}}</text>
+    <view class="post-like">
+        <image src="/images/icon/wx_app_collect.png" />
+        <text>{{collectionNum}}</text>
+        <image src="/images/icon/wx_app_view.png" />
+        <text>{{readingNum}}</text>
+        <image src="/images/icon/wx_app_message.png" />
+        <text>{{commentNum}}</text>
+    </view>
+</view> -->
+<!-- 引用数据写法 -->
+<!-- <block wx:for="{{postList}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
+    <view class="post-container">
+        <view class="post-author-data">
+            <image src="{{item.avatar}}" />
+            <text>{{item.data}}</text>
+        </view>
+        <image class="post-image" src="{{item.postImg}}" mode="aspectFill" />
+        <text>{{item.content}}</text>
+        <view class="post-like">
+            <image src="/images/icon/wx_app_collect.png" />
+            <text>{{item.collectionNum}}</text>
+            <image src="/images/icon/wx_app_view.png" />
+            <text>{{item.readingNum}}</text>
+            <image src="/images/icon/wx_app_message.png" />
+            <text>{{item.commentNum}}</text>
+        </view>
+    </view>
+</block> -->
+<!-- 模块写法 -->
+<block wx:for="{{postList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+    <view catchtap="onTapToDetail" data-post-id="{{item.postId}}">
+        <template is="postItemTpl" data="{{...item}}"></template>
+    </view>
+</block>

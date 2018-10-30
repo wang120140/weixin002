@@ -1,0 +1,8 @@
+<!-- pages/wecome/welcome.wxml -->
+<view class='container'>
+  <image class='avatar' src='/images/001.jpg'></image>
+  <text class="motto">Hello,iron90</text>
+  <view catchtap="onTapJump" class="journey-container">
+    <text class="journey">开启我的小程序王彦辉</text>
+  </view>
+</view>
